@@ -1,4 +1,9 @@
 
+/*
+* © 2014 Ilya I. Averkov (WST)
+* http://averkov.net
+*/
+
 #ifndef PHP_EXTGMV_H
 #define PHP_EXTGMV_H
 
