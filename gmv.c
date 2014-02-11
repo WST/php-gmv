@@ -43,15 +43,15 @@ PHP_FUNCTION(gmv_info) {
 	if(!handle) RETURN_FALSE;
 
 	// Allocating some memory for the header
-	MovieHeader *header = (MovieHeader *) malloc(sizeof(MovieHeader));
+	MovieHeader header;
 
 	// Reading file header
-	readMovieHeader(handle, header);
+	readMovieHeader(handle, & header);
 
 	// Checking if the file is a proper GMV file
 	char signature[16];
 	signature[15] = 0;
-	memcpy(signature, header->signature, 15);
+	memcpy(signature, header.signature, 15);
 	if(strcmp(signature, "Gens Movie TEST")) RETURN_FALSE;
 
 	// Closing the opened GMV file
@@ -63,15 +63,12 @@ PHP_FUNCTION(gmv_info) {
 	// Getting the GMV comment
 	char comment[41];
 	comment[40] = 0;
-	memcpy(comment, header->comment, 40);
+	memcpy(comment, header.comment, 40);
 
 	// Appending items to the return array
 	add_index_string(return_value, 0, comment, 1);
-	add_index_long(return_value, 1, header->rerecords);
-	add_index_long(return_value, 2, getInputFrameRate(header));
-	add_index_bool(return_value, 3, movieRequiresSavestate(header));
-	add_index_long(return_value, 4, getInputControllerNumber(header));
-
-	// Cleanup
-	free(header);
+	add_index_long(return_value, 1, header.rerecords);
+	add_index_long(return_value, 2, getInputFrameRate(& header));
+	add_index_bool(return_value, 3, movieRequiresSavestate(& header));
+	add_index_long(return_value, 4, getInputControllerNumber(& header));
 }
