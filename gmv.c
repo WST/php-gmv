@@ -42,10 +42,8 @@ PHP_FUNCTION(gmv_info) {
 	FILE *handle = fopen(filename, "r");
 	if(!handle) RETURN_FALSE;
 
-	// Allocating some memory for the header
-	MovieHeader header;
-
 	// Reading file header
+	MovieHeader header;
 	readMovieHeader(handle, & header);
 
 	// Checking if the file is a proper GMV file
