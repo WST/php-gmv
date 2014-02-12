@@ -42,6 +42,14 @@ PHP_FUNCTION(gmv_info) {
 	FILE *handle = fopen(filename, "r");
 	if(!handle) RETURN_FALSE;
 
+	// Checking file size
+	fseek(handle, 0, SEEK_END);
+	long int size = ftell(handle);
+	if(size < 64) {
+		fclose(handle);
+		RETURN_FALSE;
+	}
+
 	// Reading file header
 	MovieHeader header;
 	readMovieHeader(handle, & header);
