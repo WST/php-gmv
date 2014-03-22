@@ -1,4 +1,4 @@
-# php-gmv
+# GMV support for PHP
 
 Just for fun PHP extension for reading Gens input files. I wrote it because it seemed easier to write a dynamic extension than to deal with PHP’s unpack() or even regular expressions for so simple task as reading a structure from a binary file. I’ll probably use this if I decide to make a gmv hosting.
 
@@ -11,3 +11,5 @@ phpize
 ./configure
 make
 ```
+
+For a Python version, use [python-gmv](https://github.com/WST/python-gmv) instead.
