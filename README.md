@@ -13,3 +13,7 @@ make
 ```
 
 For a Python version, use [python-gmv](https://github.com/WST/python-gmv) instead.
+
+## What the hell is a Gens movie?
+
+Gens movies are the files storing the input used to make a tool-assisted speedrun of a Sega game. You don’t need to deal with this extension if you have no idea what tool-assisted speedrunning is.
